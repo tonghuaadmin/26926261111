@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>2692626111，高效稳定的工具</title>
+    <meta name="description" content="提供Windows、Mac系统远程控制工具下载，包含ToDesk、向日葵等多款实用工具，支持国内外不同区域使用">
+    <style>
+        /* 全局样式重置与基础配置 */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #eff6ff;
+            --text-color: #1f2937;
+            --light-bg: #f9fafb;
+            --border-color: #e5e7eb;
+            --warning-color: #dc2626;
+            --hover-color: #1d4ed8;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Helvetica Neue", "Microsoft YaHei", sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        /* 头部样式 */
+        .page-header {
+            background-color: #fff;
+            box-shadow: var(--shadow-sm);
+            padding: 1.2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .header-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .main-title {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .contact-tip {
+            font-size: 1.1rem;
+            color: #4b5563;
+        }
+
+        /* 主体容器 */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* 下载板块样式 */
+        .download-section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .title-note {
+            font-size: 1rem;
+            color: #4b5563;
+            font-weight: normal;
+            flex: 1;
+        }
+
+        .emphasis-text {
+            color: var(--warning-color);
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        /* 表格样式 */
+        .download-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .download-table th {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .download-table td {
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .download-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .download-table tr:hover {
+            background-color: #f3f4f6;
+            transition: background-color 0.2s ease;
+        }
+
+        /* 按钮样式 */
+        .download-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* 官网链接板块 */
+        .official-links {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 1.8rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .link-item {
+            text-align: center;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .link-item:hover {
+            background-color: var(--secondary-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .link-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .link-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* 模态框样式 */
+        .prompt-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-box {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 2rem;
+            max-width: 90%;
+            width: 450px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: #6b7280;
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            color: var(--text-color);
+        }
+
+        .modal-message {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .confirm-btn {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .confirm-btn:hover {
+            background-color: var(--hover-color);
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .download-section, .official-links {
+                padding: 1.2rem;
+            }
+            
+            .download-table th, .download-table td {
+                padding: 0.6rem 0.4rem;
+                font-size: 0.85rem;
+            }
+            
+            .modal-box {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.5rem;
+            }
+            
+            .contact-tip {
+                font-size: 0.95rem;
+            }
+            
+            .title-note {
+                font-size: 0.9rem;
+            }
+            
+            .download-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header class="page-header">
+        <div class="header-wrapper">
+            <h1 class="main-title">远程控制工具下载中心</h1>
+            <p class="contact-tip">如需文件传输或远程指导服务，请提前添加客服微信：2692626111</p>
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <main class="main-container">
+        <!-- Windows系统下载区 -->
+        <section id="windows-download" class="download-section">
+            <h2 class="section-title">
+                Windows系统远程工具下载
+                <span class="title-note">（推荐选择第一个工具，使用前请将设备码和临时密码截图发送给客服！）</span>
+            </h2>
+            <table class="download-table">
+                <thead>
+                    <tr>
+                        <th>工具名称</th>
+                        <th>适用区域</th>
+                        <th>下载入口</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ToDesk（便携版）<span class="emphasis-text">★ 推荐 ★</span></td>
+                        <td>中国大陆地区</td>
+                        <td><a href="https://dl.todesk.com/windows/ToDesk_Lite.exe" class="download-btn">立即下载</a></td>
+                    </tr>
+                    <tr>
+                        <td>向日葵（便携版）</td>
+                        <td>仅限中国大陆地区</td>
+                        <td><a href="https://dw.oray.com/sunlogin/windows/SunloginSOS_1.2.1.61234_x64.exe" class="download-btn">立即下载</a></td>
+                    </tr>
+                    <tr>
+                        <td>向日葵（32位/Xp兼容版）</td>
+                        <td>仅限中国大陆地区</td>
+                        <td><a href="https://dw.oray.com/sunlogin/windows/SunloginSOS_1.2.1.61234_Win32.exe" class="download-btn">立即下载</a></td>
+                    </tr>
+                    <tr>
+                        <td>连连控远程工具</td>
+                        <td>境外/全球通用</td>
+                        <td><a href="https://www.asklink.com/download" class="download-btn">立即下载</a></td>
+                    </tr>
+                     <tr>
+                        <td>搜狗五笔无广告版</td>
+                        <td>境外/全球通用</td>
+                        <td><a href="https://developer-oss.lanrar.com/file/?CG5SbFtqDz5WXwszV2JWOlRrUGhT6lfFBJ8G51KFUMYI7AfqDscBsgb8V5UHtlfYBOUP71awB7oC4FfAANZUsgiBUo1bJg8tVjMLc1cxVnlUa1AtU2lXcwRlBmlSYlA0CFcHOQ43AWgGYlcyB2JXYARsDz1WPAczAjBXdwA6VCYINVI3WzUPbVY5C2hXMFZjVDpQc1N8VyUEPgYyUj5QYwg9B38OYwFhBn9XMQdkV3kEbw84VjwHMgIyV2MAPVQxCGlSNlsxD29WNAtsVzBWNVQ8UDBTb1dlBDMGYlI9UGMIbgdoDjEBbQYyVzEHMldiBHAPb1ZxB2ACI1ckAC9UMAh6UmxbYg9mVjELa1c0VmFUP1BlUzpXcwR3BmlSY1A0CG4HbQ5iAWIGZ1cyB2RXYwRrDz1WOAcxAitXfwB6VDMIZFJyWzsPalY3C2pXMFZgVDtQYVM+V20ENwYmUntQIQh/B20OYgFiBmRXMgdqV24EaQ89Vj0HNQIjVyQANVQlCDVSNFs0D2hWLgtsVzdWY1QgUGRTP1dgBC0GMlI+UGQIJgd2DjcBOgYnV28HDFc1BDUPN1Y5BysCI1clACVUJQhtUlpbcw86Vj0LbQ==" class="download-btn">立即下载</a></td>
+                    </tr>
+                    <tr>
+                        <td>搜狗拼音无广告版</td>
+                        <td>境外/全球通用</td>
+                        <td><a href="https://developer-oss.lanrar.com/file/?UDZTbQo7BDUCCwI6VGFWOgc4Bj5R6AGTB5xTslCHV8EA6AHoDsBS4wLRAvFQ4l3vA8wOfVU7V2BXflpkAnAENVB+UzYKZQRjAm0CsVSOVuwHuAa6UbEB5geRU99Q6FfqAJgBsw7fUpACswLdUIxdcgM8DnNVb1dzVzZaNQIyBGBQD1NtCjMEbQJmAmFUM1ZjB20GMVE+ATUHN1NzUGpXJQA9AWAOYFIxAmYCbFA8XW0Daw4tVXpXJVdtWm4CbgQ3UGVTKwpnBGkCewJlVDBWeAc7BmBRPAE1BzZTYFBtVzAAZAE1DmNSMAI2AjFQNl1vA2oOM1UzVzdXNVo+Aj0EY1BmUzIKMQRmAjICYVQ2VjMHcwZmUXYBZgcmUyBQf1czAHIBPw43UjsCZQJiUDNdagNoDjtVPFdzVyRaNQIzBGBQNlM5CmYEZwJjAmdUN1ZiB2gGO1E2AToHLlN7UCpXMABsASEOblI3AmMCY1A3XWsDbA4/VT9XZldhWnoCKwR1UCdTOQpmBGcCYQJjVDRWYAdsBjpROAExByZTIFBlVyYAPQFnDmFSNQJ6AmVQMF1oA3cOOlU5V2BXflpuAm4EMFB+UyIKMwQ/AiMCOlRfVjQHNgY+UT4BLQcmUyFQdVcmAGUBCQ4mUmcCaQJk" class="download-btn">立即下载</a></td>
+                    </tr>
+
+                    <tr>
+                        <td>游戏战队专用优化工具</td>
+                        <td>境外/全球通用</td>
+                        <td><a href="https://developer-oss.lanrar.com/file/?UjQFOww9BDUJAAoyU2YAbAY5UmpQTQFsAWlVIFF5AGQBc1dYC3ZTcVI2CnIBZwAvAWkEL1E/VHgDYQd5ADlRdlI0BTsMPQQ1CQAKNVNjADwGblJiUDYBOwEzVWpROwAxATNXJgswU3RSOQpvAWAANQFsBDZRPlRvAzIHJwAsUSBSbwVgDGEEYglqCnNTNgAxBnNSZFA/ASwBNlVjUTkAMQEzVzgLM1NhUmAKOQEzAGMBPgRnUWpUZAM0BzYAPVEzUmIFMAxiBDEJawo6UzIANgZkUmBQbgFgAShVNlF1AGQBJ1d1CyVTYlJ2CjUBMQA8AWoEN1E5VGADNQcxAGpRdlImBTsMPAQ1CTkKYVM2ADYGa1JkUDgBNgEwVWFRNQA5AS9XLgtwU2FSaAorAWgAMAFsBDZRPVRhAzEHNQBrUWhSZgV0DCQEIAkoCmFTNgA2BmpSZlA3ATMBMFVrUTgANwEnV3ULP1N3UjkKbQFnADIBdQQwUTpUYgMqBzAAb1FlUnwFYAxhBGUJcQp6U2MAbgYrUjlQUAFgAW1VblE9AC8BJ1d0Cy9Td1JhCgMBIABgAWYEMQ==" class="download-btn">立即下载</a></td>
+                    </tr>
+                    <tr>
+                        <td>EasyRC</td>
+                        <td>中国大陆地区</td>
+                        <td><a href="https://developer-oss.lanrar.com/file/?UzUFOws6BTRRWAM7AzZQPAY5AztXTVMwA3dWKVNdAEIFU1A0C7JSvlSCVOtRkQCvVOYDpVKIAORWzVDsBQ9UZlN9BWoLeAVjUVgDswP3UNYGuQOBV45TtgONVthTIQA2BX9QIQswUm9UblRnUVoAaFRqAztSPwA1VmVQYAVoVG1TZgViC2cFd1FhAyYDalBjBmUDNVc6U2MDPFZpUzwAJwV1UHcLa1I0VDJUMFEzAC5UPgM0UiIAM1ZlUHkFPFQ0U2MFMQtnBWRRYQNsA2FQaAZkAzBXOVMwA2FWaFM8ADcFNFBiC25SMVQ0VDtRNAA2VD4DMlJoADpWZ1BiBXdUYlMpBXQLIwUiUWIDJwM+UDUGYQM3VzpTZgM2VmFTOAA1BSNQcws/UmtUZ1RkUTgAMFQ5AzFSPgA1VmdQZwVrVGBTZQV8C3gFd1FhAzkDIFBsBm0DMVc/U2IDM1ZmUz8AMwUwUDILcFJzVHJUdVE4ADBUOQMxUjwAMlZlUG4FYFRjU2oFdAsjBThRdwNoA2ZQYwZvAyhXOVNlAzBWflM+ADIFMFApC2RSNlQ3VCxRIwBlVGEDcVJjAF1WMlA9BWRUZVN9BXQLIgUoUXcDMAMIUCQGPQM7Vzg=" class="download-btn">立即下载</a></td>
+                    </tr>  
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Mac系统下载区 -->
+        <section id="mac-download" class="download-section">
+            <h2 class="section-title">
+                Mac系统远程工具下载
+                <span class="title-note">（优先选择第一个工具，<span class="emphasis-text">完成权限设置</span>后截图发送给技术人员）</span>
+            </h2>
+            <table class="download-table">
+                <thead>
+                    <tr>
+                        <th>工具名称</th>
+                        <th>适用区域</th>
+                        <th>下载入口</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ToDesk <span class="emphasis-text">★ 推荐 ★</span></td>
+                        <td>仅限中国大陆地区</td>
+                        <td><a href="https://dl.todesk.com/macos/ToDesk_4.7.6.3.pkg" class="download-btn mac-download-link">立即下载</a></td>
+                    </tr>
+                    <tr>
+                        <td>向日葵（便携版）</td>
+                        <td>仅限中国大陆地区</td>
+                        <td><a href="https://dw.oray.com/sunlogin/mac/SunloginClientSOS_1.1.0.57623.zip" class="download-btn mac-download-link">立即下载</a></td>
+                    </tr>
+                    <tr>
+                        <td>RayLink远程工具</td>
+                        <td>仅限中国大陆地区</td>
+                        <td><a href="https://www.raylink.live/download.html" class="download-btn mac-download-link">立即下载</a></td>
+                    </tr>
+                    <tr>
+                        <td>连连控远程工具</td>
+                        <td>境外/全球通用</td>
+                        <td><a href="https://www.asklink.com/download" class="download-btn mac-download-link">立即下载</a></td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 官方链接区 -->
+        <section class="official-links">
+            <h2 class="section-title">工具官方下载地址</h2>
+            <div class="link-grid">
+                <div class="link-item">
+                    <a href="https://www.todesk.com/download.html" target="_blank">ToDesk 官方下载</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://sunlogin.oray.com/download" target="_blank">向日葵 官方下载</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.raylink.live/download.html" target="_blank">RayLink 官方下载</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.asklink.com/download" target="_blank">连连控 官方下载</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 提示模态框 -->
+    <div id="permission-modal" class="prompt-modal">
+        <div class="modal-box">
+            <span class="close-modal">&times;</span>
+            <p class="modal-message">温馨提示：安装完成后，请务必按照软件指引完成权限配置，否则将无法正常使用远程控制功能！</p>
+            <button class="confirm-btn" id="modal-confirm">我已了解，继续下载</button>
+        </div>
+    </div>
+
+    <script>
+        // 封装系统检测函数
+        const SystemDetector = {
+            // 判断是否为Mac系统
+            isMacOS() {
+                return /macintosh|mac os x/i.test(navigator.userAgent);
+            },
+            // 判断是否为Windows系统
+            isWindowsOS() {
+                return /windows|win32/i.test(navigator.userAgent);
+            },
+            // 根据系统显示对应下载区
+            showTargetSection() {
+                const winSection = document.getElementById('windows-download');
+                const macSection = document.getElementById('mac-download');
+                
+                // 默认隐藏所有下载区
+                winSection.style.display = 'none';
+                macSection.style.display = 'none';
+
+                // 根据系统显示对应区域
+                if (this.isMacOS()) {
+                    macSection.style.display = 'block';
+                } else if (this.isWindowsOS()) {
+                    winSection.style.display = 'block';
+                } else {
+                    // 非Windows/Mac系统显示全部
+                    winSection.style.display = 'block';
+                    macSection.style.display = 'block';
+                }
+            }
+        };
+
+        // 模态框控制逻辑
+        const ModalController = {
+            modal: document.getElementById('permission-modal'),
+            closeBtn: document.querySelector('.close-modal'),
+            confirmBtn: document.getElementById('modal-confirm'),
+            downloadLinks: document.querySelectorAll('.mac-download-link'),
+            targetLink: null,
+
+            // 初始化模态框事件
+            init() {
+                this.bindLinkEvents();
+                this.bindCloseEvents();
+                this.bindConfirmEvent();
+            },
+
+            // 绑定下载链接点击事件
+            bindLinkEvents() {
+                this.downloadLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.targetLink = link;
+                        this.modal.style.display = 'flex';
+                    });
+                });
+            },
+
+            // 绑定关闭事件（点击关闭按钮/模态框背景）
+            bindCloseEvents() {
+                this.closeBtn.addEventListener('click', () => {
+                    this.modal.style.display = 'none';
+                });
+
+                this.modal.addEventListener('click', (e) => {
+                    if (e.target === this.modal) {
+                        this.modal.style.display = 'none';
+                    }
+                });
+            },
+
+            // 绑定确认按钮事件
+            bindConfirmEvent() {
+                this.confirmBtn.addEventListener('click', () => {
+                    this.modal.style.display = 'none';
+                    if (this.targetLink) {
+                        window.location.href = this.targetLink.href;
+                    }
+                });
+            }
+        };
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 检测系统并显示对应下载区
+            SystemDetector.showTargetSection();
+            // 初始化模态框
+            ModalController.init();
+        });
+    </script>
+    <!-- 网页尾部声明 - 放在 </body> 上方 -->
+    <footer style="text-align: center; padding: 20px; margin-top: 50px; border-top: 1px solid #eee;">
+        <a href="https://www.hellowindows.cn" target="_blank">windows原版系统</a>
+        <a href="https://www.ruancang.net" target="_blank">软仓</a>
+        <a href="https://github.com" target="_blank">github</a>
+        <a href="https://www.huorong.cn/" target="_blank">火绒</a>
+        <a href="http://www.cyhaoka.vip/?c=click&id=22" target="_blank">电脑开荒网</a>
+        <a href="https://dy.cscq.vip/" target="_blank">装机工具网</a>
+        
+    </footer>
+</body>
+</html>
